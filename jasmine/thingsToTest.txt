@@ -1,0 +1,10 @@
+Json View:
+ 1. After response the json must be displayed iside  json viewer panel -v
+ 2. 'loading' indicator must be displayed after request sended -v
+ 3. 
+
+Services List View
+ 1. No data should be displayed in case there is no services in xml
+ 2. "No XML file found" should be displayed in case there is no xml at this path
+ 3. Xml not formed correcctly  should be displayed in case there is double attributes inside XML
+ 4. keys navigaiton
