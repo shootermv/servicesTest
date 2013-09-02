@@ -1,8 +1,23 @@
+
+ $( document ).on( "mobileinit",
+    // Set up the "mobileinit" handler before requiring jQuery Mobile's module
+    function() {
+      // Prevents all anchor click handling including the addition of active button state and alternate link bluring.
+      $.mobile.linkBindingEnabled = false;
+
+      // Disabling this will prevent jQuery Mobile from handling hash changes
+      $.mobile.hashListeningEnabled = false;
+       alert('o')
+    }
+  ); 
+
+
 $(function () {
+   
     var servicesLst = new ServicesList();
     var srvLV = new ServicesListView({ collection: servicesLst });
      
-             //search
+          //search
     // $('nav').prepend('<div  data-role="fieldcontain"> <label for="search-2">Search Input:</label> <input type="search" name="search-2" id="search-2" value=""></div>')//new SearchView().render().el);
     
     //loading animation               

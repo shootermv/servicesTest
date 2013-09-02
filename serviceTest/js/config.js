@@ -4,7 +4,8 @@ require.config({
   deps:["config","app-amd"],
   paths: {
     'jquery'    : 'jquery/jquery',        
-    'jquery.mobile': 'mobile/jquery.mobile-1.3.1.min' ,
+    'jquerymobile.config' : 'mobile/jquerymobile.config',
+    'jquerymobile': 'mobile/jquery.mobile-1.3.1.min' ,
     'underscore': 'underscore-amd/underscore-min',
     'backbone'  : 'backbone-amd/backbone-min',
     text: 'plugins/text'
@@ -14,8 +15,12 @@ require.config({
       exports: "_"
     },
     'jquery'    : 'jquery',
+    'jquerymobile.config' : ['jquery'],
+     jquerymobile : {
+          deps : ["jquery", 'jquerymobile.config']
+     },
      backbone: {
-          deps: ['underscore', 'jquery', 'jquery.mobile'],
+          deps: ['underscore', 'jquery', 'jquerymobile'],
           exports: 'Backbone'
      }
  }

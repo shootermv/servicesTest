@@ -14,9 +14,10 @@ if ( typeof define === "function" && define.amd  ) {
 			            action: '',
                         datatype:'json',
 			            params:[],
-                        status:''
+                        status:'',
+                        selected:false
 			    },
-
+                idAttribute:"method",
 			    invoke:function(){
 
 			    	    this.prepareParams();

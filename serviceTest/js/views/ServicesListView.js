@@ -19,19 +19,16 @@ if ( typeof define === "function" && define.amd  ) {
                     'click': 'select'
                 },
                 select: function (e) {
-                    console.log('listview element clicked',$(e.target).attr('href'));
 
-                    //$.mobile.ajaxEnabled = false;
-                    //$.mobile.hashListeningEnabled = false;
-                    //this.options.router.navigate($(e.target).attr('href'),false);
-                   return false;
+                    this.options.router.navigate($(e.target).attr('href'),true);
+                    return false;
                 },
 
                 render: function (e) {
                     var _this = this;
                     _this.$el.empty();
                
-                    console.log('list rendering...')
+                    //console.log('list rendering...')
                     $(_this.collection.models).each(function (i, servicemodel) {
 
                         var servLiv=new ServicesListItemView({ model: servicemodel });

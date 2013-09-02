@@ -7,12 +7,17 @@ if ( typeof define === "function" && define.amd  ) {
         ]
         , function (Backbone, ServiceDetailView, service_list_item_tpl) {
 
+
+           
+
+               
             var ServicesListItemView = Backbone.View.extend({
                 tagName: "li",
                 template: _.template(service_list_item_tpl),
                 initialize:function(){
                 
                     this.listenTo(this.model, 'change:status', this.statuschanged);
+                    this.listenTo(this.model, 'change:selected', this.select);
 
                 },
                 statuschanged:function () {
@@ -20,11 +25,12 @@ if ( typeof define === "function" && define.amd  ) {
                    if(this.model.get('status')=='succeeded') this.markSuccess();
                 },
                 events: {
-                    'click .ui-btn-text': 'select'
+                    //'click .ui-btn-text': 'select'
                 },
                 select: function () {
                     
-                    
+                    if(!this.model.get('selected'))return;//if false
+
                     if (this.detailView) this.detailView.destroy_view();
                     $('#main').empty();
                     this.setNewTheme('c', this.$el.siblings());
@@ -40,7 +46,8 @@ if ( typeof define === "function" && define.amd  ) {
                     $('#main').trigger('create');
                     
 
-                   // return false;
+                    return false;
+
                 },
                 markFailing:function () {
                      this.$el.find('.ui-icon').addClass('error');                   
@@ -53,7 +60,7 @@ if ( typeof define === "function" && define.amd  ) {
                 },
 
                 render: function () {
-                    console.log('listitem rendering...')
+                    //console.log('listitem rendering...')
                     this.$el.html(this.template(this.model.toJSON()));
                     return this;
                 }

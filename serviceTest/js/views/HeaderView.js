@@ -14,6 +14,7 @@
                     'click a.runall': 'runBatch'
                 },
                 runBatch: function () {
+
                   var _this=this;
                   var oldtext=_this.$el.find('h1').text();
                   _this.$el.find('h1').text('Batch running...');
@@ -22,6 +23,7 @@
 
                     _this.$el.find('h1').text(oldtext);
                   });
+                  return false;
                 },
                 render: function () {
 

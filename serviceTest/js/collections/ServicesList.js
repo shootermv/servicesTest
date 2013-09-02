@@ -12,6 +12,40 @@ if ( typeof define === "function" && define.amd  ) {
             var ServicesList = Backbone.Collection.extend({
                 url:   settings.xmlURL,//"services.xml",
                 model: Service,
+                setSelectedModel: function (method) {
+                    //console.log('trying to select') 
+                    this.forEach(function(model, index) {
+                        model.set({selected: model.get('method')==method ? true: false});                       
+                    });
+                    
+                },
+                fetchAll:function(servicesListView, method){
+                    var _this =this; 
+                    servicesListView.showLoading();
+                    this.fetch({        
+                        complete: function (xhr, textStatus) {
+                            //console.log('fetching..')
+                            servicesListView.hideLoading();
+                            switch (xhr.status) {
+                                case 404:
+                                    textStatus = 'no xml file found at the path'
+                                    break;
+                                case 200:
+                                   if(textStatus=='success')
+                                    {                                        
+                                        if(method)_this.setSelectedModel(method);
+                                        return;  
+                                    }                                                    
+                                   break;
+                            }
+                            $('#main').html('<span style="color:red">Cannot load the XML - ' + textStatus + '</span>'); 
+
+                                     
+                        }
+                    });
+
+
+                },
                 parse: function (data) {
 
                     var parsed = [];

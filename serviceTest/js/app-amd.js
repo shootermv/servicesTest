@@ -1,66 +1,26 @@
-define([
-
-	 'views/ServicesListView',
-	 'collections/ServicesList',
-   'views/HeaderView'     
-	 ],
- function (ServicesListView, ServicesList, HeaderView) {
-
-  var app={};
-  app.servicesLst = new ServicesList();   
-  app.servicesListView =null;//not yet
-  
-
-  
 
 
-  var Router = Backbone.Router.extend({
-    routes: {
-      "": "list",
-      "services/:method":"serviceDetails"
-    },
+// Includes File Dependencies
+require([ "jquery", "backbone", "routers/Router" ], function( $, Backbone, Router ) {
+ 
+  /*
+  $( document ).on( "mobileinit",
+    // Set up the "mobileinit" handler before requiring jQuery Mobile's module
+    function() {
+      // Prevents all anchor click handling including the addition of active button state and alternate link bluring.
+      $.mobile.linkBindingEnabled = false;
 
-    list: function(){
-
-        if(!app.servicesLst.models.length){
-            
-            app.servicesListView= new ServicesListView({ collection: app.servicesLst, router:this }); 
-            app.headerView = new HeaderView({listview:app.servicesListView}).render();       
-            //loading animation
-            app.servicesListView.showLoading();
-            
-            
-
-            //fetch the servvices from xml
-            app.servicesLst.fetch({        
-                complete: function (xhr, textStatus) {
-                    console.log('fetching..')
-                    app.servicesListView.hideLoading();
-                    switch (xhr.status) {
-                        case 404:
-                            textStatus = 'no xml file found at the path'
-                            break;
-                        case 200:
-                           if(textStatus=='success')
-                              return;                  
-                           break;
-                    }
-                    $('#main').html('<span style="color:red">Cannot load the XML - ' + textStatus + '</span>');            
-                }
-            });
-        }
-    },
-    serviceDetails:function(method){
-
-        alert(method);
-        return false;
+      // Disabling this will prevent jQuery Mobile from handling hash changes
+      $.mobile.hashListeningEnabled = false;
+      console.log('mobile router disabled!')
     }
+  );
+  */
+
+  require( [ "jquerymobile" ], function() {
+    // Instantiates a new Backbone.js Mobile Router
+   // this.router = new Mobile();
+     var router = new Router();
+     Backbone.history.start();     
   });
-
-
-
-  app.router = new Router();
-  Backbone.history.start();
-
-  return app;
-})
+});
