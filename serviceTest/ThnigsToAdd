@@ -6,10 +6,14 @@
 6. more tests
 7. abilitiy to run with server ulrs from config -V
 8. abilitiy to run with xml ulrs from config -V
-9. abilitiy to run all the services at once and get indication of failure/success -v
+9. abilitiy to run all the services at once and get indication of failure/success -V
 10. ability to navigate with keys
 11. add ability to run custom service and to save it to xml
 12. data type selector -V
 13. CSV formatter -V
-14. deep links support
+14. deep links support -V
 15. save json to clipboard
+16. ability to invoke with enter key -V
+17. 'Help' button
+18. headers support
+19. objects as parameters support

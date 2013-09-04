@@ -8,3 +8,11 @@ Services List View
  2. "No XML file found" should be displayed in case there is no xml at this path
  3. Xml not formed correcctly  should be displayed in case there is double attributes inside XML
  4. keys navigaiton
+
+Service Model:
+ 1. parateters of body is inside body
+ 2. parmeters of querystring - affter '?'
+ 3. 'before paramteres' - before '?'
+
+Service Collection:
+ 1. properties populated from xml as expected

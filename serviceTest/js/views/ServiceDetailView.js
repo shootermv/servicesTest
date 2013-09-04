@@ -18,10 +18,17 @@ if ( typeof define === "function" && define.amd  ) {
                 initialize: function () {
                     this.render();
 
+                    $(document).on('keyup', this.keyup);
+                    
+
                     //this.listenTo(this.model, 'change', this.render);
                 },
                 events: {
-                    'click #invokebutton': 'invokeService'
+                    'click #invokebutton': 'invokeService'                                     
+                },
+                keyup: function(e) {
+                    if (e.keyCode != 13) return;
+                           $('#invokebutton').click();      
                 },
                 invokeService: function () {
                     
@@ -44,7 +51,11 @@ if ( typeof define === "function" && define.amd  ) {
                     this.more_view = new MoreDetailsView({ model: this.model, modified_url:this.model.prepareParams() });
                     collapseset.append(this.more_view.render().el);
 
-                    $('#main').trigger('create')
+                    $('#main').trigger('create');
+
+
+
+
                     
                     return this;
                 },
