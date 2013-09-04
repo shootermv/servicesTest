@@ -49,5 +49,14 @@
           </request>
           <description>Deletes the wine</description>           
         </method>
-    </resource>          
+    </resource>
+    <resource path="/api/headers/" >
+        <method id="send_headers" action="POST">
+          <request>
+            <param name="customheader1" default="some-value-for-header" placein="header" /> 
+            <param name="customheader2" default="9" placein="header" />   
+          </request>
+          <description>Deletes the wine</description>           
+        </method>
+    </resource> 	
 </application>

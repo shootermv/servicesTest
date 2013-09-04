@@ -25,6 +25,7 @@ if ( typeof define === "function" && define.amd  ) {
                             type: this.get('action'), //GET or POST or PUT or DELETE verb
                             timeout: 2000,
                            // cache: false,
+                            beforeSend:this.beforeSend,
                             url: this.url,
                             data: this.dataparams,
                             contentType:'application/json', // content type sent to server
@@ -46,7 +47,7 @@ if ( typeof define === "function" && define.amd  ) {
             		
                     this.dataparams = {};
             		
-            		var beforeparams=[],afterparams='';
+            		var beforeparams=[], headerparams=[] ,afterparams='';
             		
                     _.each(this.get('params').models, function (param) {
             		    
@@ -58,6 +59,9 @@ if ( typeof define === "function" && define.amd  ) {
             				   case 'after':                      
             					  afterparams = afterparams + param.get('name')+'='+ param.get('defaultValue')+'&';					  
             					  break;
+                               case 'header':                                                            
+                                  headerparams.push(param);
+                                  break;
             				}//end of switch				
                         }
                         else
@@ -75,17 +79,36 @@ if ( typeof define === "function" && define.amd  ) {
             		
             		
             		
-            		//take care of after params:
+            		//take care of after params:                    
             		if(afterparams!=''){
                       afterparams=afterparams.substring(0,afterparams.length-1);//remove last '&'
             		  this.url = this.checkIfHasLast(this.url ,'?') +afterparams;
             		}
+
+
                     //serverUrL from settings
             		this.url =settings.serverURL + this.url;
             		//take care of usual params:
             		
             		//avoid stringify for get
                     if(this.get('action') !== 'GET' ) this.dataparams=JSON.stringify(this.dataparams);
+
+
+                    //headers
+                    console.log('headers',headerparams)
+                    if(headerparams.length!=0){
+                        this.beforeSend=function (request)
+                        {
+                            $(headerparams).each(function(ind, _param){
+                                request.setRequestHeader(_param.get('name'), _param.get('defaultValue'));
+                            });
+                           
+                        };                        
+                    }
+
+
+
+
             		//no params
             		if(!(this.get('params').models || {}).length){ this.dataparams=null; }
 

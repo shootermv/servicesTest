@@ -125,12 +125,14 @@ generateExcel = function(req, res){
 
 // HTTP REQUEST HANDLERS
 handlePost = function(req, res) {
+   
   if (req.url === "/postComment") {
     addComment(req, res);
   } 
 
 
   else if(req.url === "/api/wines"){
+
     
 	  var body="";
     
@@ -157,6 +159,14 @@ handlePost = function(req, res) {
 	  });
     
      
+  }else if(req.url === "/api/headers/"){
+          for(headeer in req.headers){
+            util.log('header--'+headeer+':'+req.headers[headeer])
+          }
+             
+           res.writeHead(200, { 'Content-Type': 'application/json' });
+           res.write(JSON.stringify({ "result": "wine saved successfully"}));
+           res.end();
   }
   else {
     var str = "<div data-role='dialog'><div data-role='header'><h1>Server Response</h1></div>"

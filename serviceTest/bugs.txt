@@ -1,0 +1,1 @@
+1. PrepareParams function of serviceModel, called twice when some item clicked
