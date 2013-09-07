@@ -107,7 +107,8 @@ else
 
 
 
-    var JsonView = Backbone.View.extend({
+/* 
+   var JsonView = Backbone.View.extend({
 
         template: _.template($('#json-view').html()),
         invokeService: function () {
@@ -249,5 +250,6 @@ else
             this.remove();
             this.unbind();
         }
-    });    
+    }); 
+    */   
 }

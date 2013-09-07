@@ -31,11 +31,13 @@ if ( typeof define === "function" && define.amd  ) {
                     
                     if(!this.model.get('selected'))return;//if false
 
+
                     if (this.detailView) this.detailView.destroy_view();
                     $('#main').empty();
                     this.setNewTheme('c', this.$el.siblings());
                     this.setNewTheme('b', this.$el);
 
+                    
 
                     this.detailView = new ServiceDetailView({ model: this.model });
                     $('#main').html(this.detailView.render().el);

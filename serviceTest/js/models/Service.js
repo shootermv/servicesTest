@@ -19,7 +19,7 @@ if ( typeof define === "function" && define.amd  ) {
 			    },
                 idAttribute:"method",
 			    invoke:function(){
-
+                        console.log('invoke called');
 			    	    this.prepareParams();
                         return $.ajax({
                             type: this.get('action'), //GET or POST or PUT or DELETE verb
@@ -64,8 +64,12 @@ if ( typeof define === "function" && define.amd  ) {
                                   break;
             				}//end of switch				
                         }
-                        else
-                            this.dataparams[param.get('name')] = param.get('defaultValue').replace(/\'/g, '\\"');
+                        else{
+                            if(typeof  param.get('defaultValue')==='string')//must replace "'" with '\"'
+                             param.set({'defaultValue':param.get('defaultValue').replace(/\'/g, '\\"')});
+
+                           this.dataparams[param.get('name')] =param.get('defaultValue');
+                        }
                         
             			
                     }, this);//end of each
@@ -94,8 +98,8 @@ if ( typeof define === "function" && define.amd  ) {
                     if(this.get('action') !== 'GET' ) this.dataparams=JSON.stringify(this.dataparams);
 
 
-                    //headers
-                    console.log('headers',headerparams)
+                    //headers                    
+
                     if(headerparams.length!=0){
                         this.beforeSend=function (request)
                         {

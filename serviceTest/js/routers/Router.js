@@ -48,7 +48,7 @@ define([
 
           }
           else{
-
+            
             app.servicesLst.setSelectedModel(method);
 
           }

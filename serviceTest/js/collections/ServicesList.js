@@ -20,6 +20,9 @@ if ( typeof define === "function" && define.amd  ) {
                     
                 },
                 fetchAll:function(servicesListView, method){
+
+
+
                     var _this =this; 
                     servicesListView.showLoading();
                     this.fetch({        
@@ -61,7 +64,12 @@ if ( typeof define === "function" && define.amd  ) {
                                 $(serv).find('param').each(function (index, param) {
                                     var paramModel = new Param({ 
                                         'name': $(param).attr('name'),
-                                        'defaultValue': $(param).attr('default') ,
+                                        'defaultValue': function(){ 
+                                            if(!$(param).attr('paramtype'))
+                                                return $(param).attr('default');
+                                            else if($(param).attr('paramtype')==='object')
+                                                return JSON.parse($(param).attr('default'));
+                                         }()  ,
                                         'placein': $(param).attr('placein')                             
                                     });
                                     parList.add(paramModel);

@@ -55,7 +55,7 @@ require(['underscore', 'backbone', 'jasmine-html', 'sinon'], function (_, Backbo
     var specs = [];
    
     specs.push('spec/views/JsonViewSpec');
-    //specs.push('spec/views/ServiceModelSpec');
+    specs.push('spec/models/ServiceModelSpec');
 
     $(function () {
         require(specs, function () {

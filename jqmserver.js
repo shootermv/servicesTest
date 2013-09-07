@@ -167,6 +167,22 @@ handlePost = function(req, res) {
            res.writeHead(200, { 'Content-Type': 'application/json' });
            res.write(JSON.stringify({ "result": "wine saved successfully"}));
            res.end();
+  }else if(req.url === "/api/objecttype/"){
+      var body="";
+      req.on('data', function (data) {
+        body += data;
+
+      });
+      req.on('end', function () {
+
+           var data=JSON.parse(body) 
+          
+           util.log('data:'+data.objectparameter.name);
+             
+           res.writeHead(200, { 'Content-Type': 'application/json' });
+           res.write(JSON.stringify({ "result": "wine saved successfully"}));
+           res.end();
+      });
   }
   else {
     var str = "<div data-role='dialog'><div data-role='header'><h1>Server Response</h1></div>"

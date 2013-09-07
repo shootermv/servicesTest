@@ -16,7 +16,7 @@ if ( typeof define === "function" && define.amd  ) {
             var ServiceDetailView = Backbone.View.extend({
                 template: _.template(service_detail_tpl),
                 initialize: function () {
-                    this.render();
+                   // this.render();
 
                     $(document).on('keyup', this.keyup);
                     
@@ -36,6 +36,7 @@ if ( typeof define === "function" && define.amd  ) {
                     return false;
                 },
                 render: function () {
+                    
 
                     this.$el.html(this.template(this.model.toJSON()));
                     var collapseset = this.$el.find('[data-role="collapsible-set"]');

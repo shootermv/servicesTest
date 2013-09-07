@@ -56,7 +56,15 @@
             <param name="customheader1" default="some-value-for-header" placein="header" /> 
             <param name="customheader2" default="9" placein="header" />   
           </request>
-          <description>Deletes the wine</description>           
+          <description>sendes some headers</description>           
         </method>
-    </resource> 	
+    </resource> 
+    <resource path="/api/objecttype/" >
+        <method id="objecttype_param" action="POST">
+          <request>
+            <param name="objectparameter" paramtype="object" default='{"name":"momo"}'/>           
+          </request>
+          <description>sends object param</description>           
+        </method>
+    </resource>     	
 </application>
