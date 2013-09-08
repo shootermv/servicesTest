@@ -29,9 +29,12 @@ if ( typeof define === "function" && define.amd  ) {
                     switch ($(e.target).text()) {
                         case 'Description':
 
-                            this.$el.html('#details-container').append(this.model.get('description'));
+                            this.$el.find('#details-container').html(this.model.get('description'));
+                            
                             break;
                         case 'Properties':
+                            
+
 
                             var prop_templ = _.template(properties_tpl);
                             this.$el.find('#details-container').html(prop_templ({model:this.model.toJSON(),modified_url:this.options.modified_url}));

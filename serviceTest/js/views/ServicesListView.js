@@ -16,10 +16,10 @@ if ( typeof define === "function" && define.amd  ) {
                     this.itemViews=[];
                 },
                 events: {
-                    'click': 'select'
+                    'click li': 'select'
                 },
                 select: function (e) {
-
+                    
                     this.options.router.navigate($(e.target).attr('href'),true);
                     return false;
                 },

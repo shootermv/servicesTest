@@ -18,7 +18,7 @@ if ( typeof define === "function" && define.amd  ) {
                 initialize: function () {
                    // this.render();
 
-                    $(document).on('keyup', this.keyup);
+                    $(document).off('keyup').on('keyup', this.keyup);
                     
 
                     //this.listenTo(this.model, 'change', this.render);
@@ -27,8 +27,9 @@ if ( typeof define === "function" && define.amd  ) {
                     'click #invokebutton': 'invokeService'                                     
                 },
                 keyup: function(e) {
+                    console.log('keyup event fired');
                     if (e.keyCode != 13) return;
-                           $('#invokebutton').click();      
+                    $('#invokebutton').click();      
                 },
                 invokeService: function () {
                     

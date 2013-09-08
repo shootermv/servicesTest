@@ -1,1 +1,2 @@
-1. PrepareParams function of serviceModel, called twice when some item clicked
+1. PrepareParams function of serviceModel, called twice when some item clicked -V
+2. When clicking enter the "invoke" called multiple times -V

@@ -1,5 +1,5 @@
 Json View:
- 1. After response the json must be displayed iside  json viewer panel -v
+ 1. After response the json must be displayed inside  json viewer panel -v
  2. 'loading' indicator must be displayed after request sended -v
  3. 
 
@@ -15,4 +15,4 @@ Service Model:
  3. 'before paramteres' - before '?'
 
 Service Collection:
- 1. properties populated from xml as expected
+ 1. properties populated from xml as expected -V
