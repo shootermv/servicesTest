@@ -16,14 +16,28 @@ if ( typeof define === "function" && define.amd  ) {
                     this.itemViews=[];
                 },
                 events: {
-                    'click li': 'select'
+                    'click li': 'select',
+                    'keydown li a':'keydown'
                 },
                 select: function (e) {
                     
                     this.options.router.navigate($(e.target).attr('href'),true);
+                    $(e.target).focus();
                     return false;
                 },
-
+                keydown: function (e) {
+                      
+                      if (e.keyCode == 40) { // down
+                        var next=$(e.target).parents('li').next().find('a');
+                        next.click();
+                        //next.focus();                        
+                      }
+                      if (e.keyCode == 38) { // down
+                        var prev=$(e.target).parents('li').prev().find('a');
+                        prev.click();
+                       // prev.focus();                        
+                      }                      
+                },
                 render: function (e) {
                     var _this = this;
                     _this.$el.empty();
@@ -35,7 +49,10 @@ if ( typeof define === "function" && define.amd  ) {
                         _this.itemViews[servicemodel.get('method')]=servLiv;//
                         _this.$el.append(servLiv.render().el);
                     });
-                    _this.$el.listview().listview('refresh');                                    
+                    _this.$el.listview().listview('refresh');
+
+                    //focus on first service link
+                    _this.$el.find('a:first').focus();                                    
                     
                 },
                 runBatch:function(callback){

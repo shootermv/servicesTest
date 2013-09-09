@@ -15,4 +15,4 @@ Service Model:
  3. 'before paramteres' - before '?'
 
 Service Collection:
- 1. properties populated from xml as expected -V
+ 1. properties populated from xml as expected 

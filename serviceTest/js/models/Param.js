@@ -10,7 +10,8 @@ if ( typeof define === "function" && define.amd  ) {
 			    defaults: {
 			        name: '',
 			        defaultValue: '',
-			        placein:''
+			        placein:'',
+			        paramtype:'string'
 			    }
 			});
 

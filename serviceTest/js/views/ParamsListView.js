@@ -18,7 +18,7 @@ if ( typeof define === "function" && define.amd  ) {
                 render: function () {
 
                     this.$el.html(this.template());
-                    this.$el.attr("data-role", "collapsible").attr("data-theme", "c").attr("data-content-theme", "d").attr('data-collapsed', "false");
+                    this.$el.attr("data-role", "collapsible").attr("data-theme", "c").attr("data-content-theme", "d");//.attr('data-collapsed', "false");
     
 
                     _.each(this.collection.models, function (param_model) {

@@ -8,20 +8,15 @@ if ( typeof define === "function" && define.amd  ) {
              return {
 
              	serverURL:'',
-             	xmlURL:'services.xml'
+             	xmlURL:'services.xml',
+                headers:[{
+                    "name"   :"headerFromSett",
+                    "default":"somevalue",
+                    "placein":"header"
+
+                }]
              }
 
         });
-
-
-
-}
-else
-{
-	var settings =
-            {
-             	serverURL:'',
-             	xmlURL:'services.xml'
-             }
 
 }

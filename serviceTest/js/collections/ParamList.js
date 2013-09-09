@@ -8,9 +8,22 @@ if ( typeof define === "function" && define.amd  ) {
         , function (Backbone, Param) {
 
 			var ParamsList = Backbone.Collection.extend({
-			    model: Param
-			});
+			    model: Param,
+                nonHeaders:function() {
+				    filtered = this.filter(function(param) {
+				       return param.get("placein") !== 'header';
+				     });
+				    return new ParamsList(filtered);
+                },
+                Headers:function() {
+				    filtered = this.filter(function(param) {
+				       return param.get("placein") === 'header';
+				     });
+				    return new ParamsList(filtered);
+                }
 
+			});
+            
 
 			return ParamsList;
 

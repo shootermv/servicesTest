@@ -61,6 +61,8 @@ if ( typeof define === "function" && define.amd  ) {
                             datatype: $(this).find('method').attr('datatype') || 'json',
                             params: function (serv) {
                                 var parList = new ParamsList();
+
+
                                 $(serv).find('param').each(function (index, param) {
                                     var paramModel = new Param({ 
                                         'name': $(param).attr('name'),
@@ -70,15 +72,52 @@ if ( typeof define === "function" && define.amd  ) {
                                             else if($(param).attr('paramtype')==='object')
                                                 return JSON.parse($(param).attr('default'));
                                          }()  ,
+                                        'paramtype':$(param).attr('paramtype') ?$(param).attr('paramtype'):'string',
                                         'placein': $(param).attr('placein')                             
                                     });
                                     parList.add(paramModel);
                                 });
+
+
+                                //get commmon headers from settings
+                                $(settings.headers).each(function (index, param) {
+                                    var paramModel = new Param({ 
+                                        'name': $(param).attr('name'),
+                                        'defaultValue': function(){ 
+                                            if(!$(param).attr('paramtype'))
+                                                return $(param).attr('default');
+                                            else if($(param).attr('paramtype')==='object')
+                                                return JSON.parse($(param).attr('default'));
+                                         }()  ,
+                                        'paramtype':$(param).attr('paramtype') ?$(param).attr('paramtype'):'string',
+                                        'placein': $(param).attr('placein')                             
+                                    });  
+                                    parList.add(paramModel);                                  
+                                });
+
                                 return parList;
                             } (serv)
                         });
                     });
                     return parsed;
+                },
+                
+                collectParams:function(collctn, parList){
+                    
+                    $(collctn).each(function (index, param) {
+                        var paramModel = new Param({ 
+                            'name': $(param).attr('name'),
+                            'defaultValue': function(){ 
+                                if(!$(param).attr('paramtype'))
+                                    return $(param).attr('default');
+                                else if($(param).attr('paramtype')==='object')
+                                    return JSON.parse($(param).attr('default'));
+                             }()  ,
+                            'paramtype':$(param).attr('paramtype') ?$(param).attr('paramtype'):'string',
+                            'placein': $(param).attr('placein')                             
+                        });  
+                        parList.add(paramModel);                                  
+                    });
                 },
 
                 fetch: function (options) {
@@ -94,43 +133,4 @@ if ( typeof define === "function" && define.amd  ) {
         });
 
 }
-else
-{
-
-    var ServicesList = Backbone.Collection.extend({
-        url:   "services.xml",
-        model: Service,
-        parse: function (data) {
-
-            var parsed = [];
-            $(data).find('resource').each(function (index, serv) {
-                parsed.push({
-                    path: $(this).attr('path'),
-                    method: $(this).find('method').attr('id'),
-                    action: $(this).find('method').attr('action'),
-                    description: $(this).find('method >description').text(),
-                    params: function (serv) {
-                        var parList = new ParamsList();
-                        $(serv).find('param').each(function (index, param) {
-                            var paramModel = new Param({ 
-                                'name': $(param).attr('name'),
-                                'defaultValue': $(param).attr('default') ,
-                                'placein': $(param).attr('placein')                             
-                            });
-                            parList.add(paramModel);
-                        });
-                        return parList;
-                    } (serv)
-                });
-            });
-            return parsed;
-        },
-
-        fetch: function (options) {
-            options = options || {};
-            options.dataType = "xml";
-
-            return Backbone.Collection.prototype.fetch.call(this, options);
-        }
-    });
-}    
+   

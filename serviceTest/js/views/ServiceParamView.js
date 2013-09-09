@@ -18,15 +18,20 @@ if ( typeof define === "function" && define.amd  ) {
                    
 
                     // Apply the change to the model
-                    var target = event.target;
+                    var targetval = event.target.value;
+                    
+                    //for receive object param: 
+                    if(this.model.get('paramtype')=='object'){
+                      targetval=JSON.parse(targetval);
+                    }
+
                     var change = {};
-                    change['defaultValue'] = target.value;
+                    change['defaultValue'] =targetval;
                     
                     this.model.set(change);
                 },
                 render: function () {
                     this.$el.attr('data-role', 'fieldcontain').html(this.template(this.model.toJSON()));                
-
                     return this;
                 }
             });

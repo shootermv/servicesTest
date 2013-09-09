@@ -27,7 +27,7 @@ if ( typeof define === "function" && define.amd  ) {
                     'click #invokebutton': 'invokeService'                                     
                 },
                 keyup: function(e) {
-                    console.log('keyup event fired');
+                    //console.log('keyup event fired');
                     if (e.keyCode != 13) return;
                     $('#invokebutton').click();      
                 },
@@ -41,10 +41,19 @@ if ( typeof define === "function" && define.amd  ) {
 
                     this.$el.html(this.template(this.model.toJSON()));
                     var collapseset = this.$el.find('[data-role="collapsible-set"]');
-                    //params view
-                    this.params_view = new ServiceParamsListView({ collection: this.model.get('params') });
-                    collapseset.append(this.params_view.render().el);
 
+                    //params view
+                    this.params_view = new ServiceParamsListView({ collection: this.model.get('params').nonHeaders() });
+                    collapseset.append(this.params_view.render().el);
+                    //expand the first panel
+                    this.params_view.$el.attr('data-collapsed', "false");
+
+
+                    //headerparams view
+                    this.headerparams_view = new ServiceParamsListView({ collection: this.model.get('params').Headers() });
+                    collapseset.append(this.headerparams_view.render().el); 
+                    this.headerparams_view.$el.find('h4').text('Headers') ;                
+                  
                     //json view            		
                     this.json_view = new JsonView({ model: this.model });		
                     collapseset.append(this.json_view.render().el);
@@ -53,8 +62,9 @@ if ( typeof define === "function" && define.amd  ) {
                     this.more_view = new MoreDetailsView({ model: this.model, modified_url:this.model.prepareParams() });
                     collapseset.append(this.more_view.render().el);
 
-                    $('#main').trigger('create');
 
+                    
+                    $('#main').trigger('create');
 
 
 

@@ -1,5 +1,8 @@
 <!--<div  data-role="fieldcontain">	  -->
 	 <label for="<%= name %>"><%= name %><% if (placein== "before") { %> <span  class="before">bf</span><% } %></label>
-     <input id="<%= name %>" name="<%= name %>" type="text" value="<%= defaultValue %>"	/>
-    				  
+	 <% if (typeof(defaultValue) === "object") { %>
+         <input id="<%= name %>" name="<%= name %>" type="text" value='<%= JSON.stringify(defaultValue)%>'	/>
+     <% }else{ %>
+       <input id="<%= name %>" name="<%= name %>" type="text" value="<%= defaultValue %>"	/>
+     <% } %>			  
 <!--</div>	-->	
