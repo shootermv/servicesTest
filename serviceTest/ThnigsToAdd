@@ -12,8 +12,11 @@
 12. data type selector -V
 13. CSV formatter -V
 14. deep links support -V
-15. save json to clipboard
+15. button for saving json to clipboard
 16. ability to invoke with enter key -V
-17. 'Help' button
+17. 'Help' button (version button)- V
 18. headers support -V
 19. objects as parameters support -V
+20. Convert backend to Express
+21. add package.json
+22. create demo page in github

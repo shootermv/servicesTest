@@ -1,150 +1,83 @@
 <!DOCTYPE html>
-<html>
-<head>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" media="screen" charset="utf-8">
-<style>
-nav{
-  clear: left;
-	float: left;
-	width: 30%;
-	padding:0;
-	margin: 0 0 0 4%;
-	display: inline;
-}
-.main{
-	float: right;
-	width: 60%;
-	padding: 10px 0;
-	margin: 0;
-	display: inline;
-	
-}
-.btncontainer{
-        
+
+<html lang="en">
+<head> 
+  <meta charset="utf-8" />
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" media="screen" charset="utf-8">
+  <style>
+    nav{
+      clear: left;
+      float: left;
+      width: 30%;
+      padding:0;
+      margin: 0 0 0 4%;
+      display: inline;
+    }
+    .main{
+     float: right;
+     width: 60%;
+     padding: 10px 0;
+     margin: 0;
+     display: inline;
+     
+   }
+   .btncontainer{
+    
     text-align: center;    
-}
-pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;overflow:auto }
-.string { color: green; }
-.number { color: darkorange; }
-.boolean { color: blue; }
-.null { color: magenta; }
-.key { color: red; }
-pre.error {outline: 3px solid red;  }
-/* O V E R R I D E S */
-.ui-field-contain label.ui-input-text {
-	width: 30%;
-}
-.ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search, .ui-field-contain div.ui-input-text {
-	width: 67%;
-}
+  }
+
+  /* F O R   J S O N */
+  pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;overflow:auto }
+  .string { color: green; }
+  .number { color: darkorange; }
+  .boolean { color: blue; }
+  .null { color: magenta; }
+  .key { color: red; }
+  pre.error {outline: 3px solid red;  }
+  /* O V E R R I D E S */
+  .ui-field-contain label.ui-input-text {
+   width: 30%;
+ }
+ .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search, .ui-field-contain div.ui-input-text {
+   width: 67%;
+ }
  .before{
-  font-size: 0.7em;
-  color:#FFF;
-  padding:0 3px;
-  margin-left:9px; 
-  background:blue;
-  border-radius:0.6em;
+    font-size: 0.7em;
+    color:#FFF;
+    padding:0 3px;
+    margin-left:9px; 
+    background:blue;
+    border-radius:0.6em;
+}
+.ui-icon.error{
+  background-color: #f53719;
+}
+.ui-icon.success{
+  background-color: green;
 }
 </style>
+ <script type="text/javascript" src="js/requirejs/require.js" data-main="js/config.js"></script>		
 </head>
-<body> 
+<body>
+   
+ <div id="home" data-role="page">
+    <div  data-role="header" id="header"> 
 
-     <!-- Home Page -->
-     <div id="home" data-role="page">
-        <div  data-role="header">	  
-           <h1>Test Services Links</h1>		  
-        </div>
-		<div  data-role="content">
-		   <nav>			
-			<ul data-role="listview" data-inset="true" id="list" data-filter="true">
-			</ul>
-		   </nav>
-		   <section class="main" id="main">
-		   </section>
-		</div>		
-     </div>
-	 
-	
-	
-	<!--T E M P L A T E S-->
-	 <script type="text/template" id="service-list-item">
-		<a href="#" ><%= method %></a>
-		<p style="display:none"><%= description %></p>
-	 </script>
-	 <script type="text/template" id="service-detail">
-        <!--<div> -->
-	    <button id="invokebutton" data-role="button" data-theme="b" data-inline="true" >invoke</button>
-        <div data-role="collapsible-set">
+     <h1>Test Services Links</h1> 
+     <a href="#" data-role="button" class="ui-btn-right">Run All</a>    
+   </div>
+   <div  data-role="content">
+     <nav>      
+      <ul data-role="listview" data-inset="true" id="list" data-filter="true">
+      </ul>
+    </nav>
+    <section class="main" id="main">
+    </section>
+  </div>    
+</div>
 
-        </div> 
-        <!--</div> -->       
-	 </script>
-     <script type="text/template" id="params-view">
-		    <!--<div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed="false" data-inset="false" >-->
-                <h4>Parameters:</h4>
-                <div id="paramsListView">
-                </div>
-            <!--</div>-->		   
-    </script>
-    <script type="text/template" id="json-view">
-		   <!--<div data-role="collapsible" data-theme="c" data-content-theme="d"  data-inset="false">-->
-                <h4 id="jsonheader">Json:</h4>
-                <pre>
-                </pre>
-            <!--</div>-->    
-    </script>    
-     <script type="text/template" id="more-view">
-		   <!--<div data-role="collapsible" data-theme="c" data-content-theme="d"  data-inset="false">-->
-                <h4 id="moredetails">Service Details:</h4>
-                    <div class="btncontainer">
-                        <div data-role="controlgroup" data-type="horizontal" data-mini="true" >                    
-                             <a href="index.html" data-role="button" class="ui-btn-active">Description</a>
-                             <a href="index.html" data-role="button" cl>Properties</a>                   
-                        </div>
-                    </div>
-                   <div id="details-container">here will come details of service</div>
-            <!--</div>-->    
-    </script>                                
-	 <script type="text/template" id="param-input">
-		<!--<div  data-role="fieldcontain">	  -->
-				 <label for="<%= name %>"><%= name %><% if (placein== "before") { %> <span  class="before">bf</span><% } %></label>
-			     <input id="<%= name %>" name="<%= name %>" type="text" value="<%= defaultValue %>"	/>			  
-		<!--</div>	-->	
-	 </script>	
-	 <script type="text/template" id="properties">
-		<div  data-role="fieldcontain">
-			 <label for="serv_url">url:</label>
-             <input id="serv_url" disabled name="serv_url" type="text" value="<%=modified_url %>"/>				  
-		</div>	
-		<div  data-role="fieldcontain">
-			 <label for="action">action:</label>
-             <input id="action" disabled name="action" type="text" value="<%=model.action %>"/>				  
-		</div>	
-	 </script>
-	<script type="text/template" id="search-view">
-	   <input type="search" name="search-2" id="search-2" value="">
-	</script>	 
-	 <!-- L I B S -->
-	<script  src="js/jquery/jquery.js"></script>
-	<script  src="js/underscore-amd/underscore-min.js"></script>
-	<script  src="js/backbone-amd/backbone-min.js"></script>	
-	<script  src="js/mobile/jquery.mobile-1.3.1.min.js"></script>
-     <!-- M O D E L S -->
-    <script  src="js/models/Param.js"></script>    
-    <script  src="js/models/Service.js"></script>
-    <!-- C O L L E C T I O N S -->
-    <script  src="js/collections/ParamList.js"></script>
-    <script  src="js/collections/ServicesList.js"></script>
-    <!-- V I E W S -->
-    <script  src="js/views/ServiceParamView.js"></script>
-	<script  src="js/views/JsonView.js"></script>
-    <script  src="js/views/MoreDetailsView.js"></script>
-    <script  src="js/views/ParamsListView.js"></script>
-    <script  src="js/views/ServicesListView.js"></script>
-    <script  src="js/views/ServiceDetailView.js"></script>
-    <script  src="js/views/ServicesListItemView.js"></script>
-	<script  src="js/views/SearchView.js"></script>    
-	<script  src="js/app.js"></script>	 
+
 </body>
 </html>
