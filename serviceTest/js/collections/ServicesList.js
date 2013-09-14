@@ -50,7 +50,7 @@ if ( typeof define === "function" && define.amd  ) {
 
                 },
                 parse: function (data) {
-
+                   var _this=this;
                     var parsed = [];
                     $(data).find('resource').each(function (index, serv) {
                         parsed.push({
@@ -63,6 +63,10 @@ if ( typeof define === "function" && define.amd  ) {
                                 var parList = new ParamsList();
 
 
+
+
+                                _this.collectParams($(serv).find('param'), parList);
+                                /*
                                 $(serv).find('param').each(function (index, param) {
                                     var paramModel = new Param({ 
                                         'name': $(param).attr('name'),
@@ -77,9 +81,13 @@ if ( typeof define === "function" && define.amd  ) {
                                     });
                                     parList.add(paramModel);
                                 });
+                                 */
 
+                                 //get commmon headers from settings
+                                _this.collectParams(settings.headers, parList);
 
-                                //get commmon headers from settings
+                                /*
+                                
                                 $(settings.headers).each(function (index, param) {
                                     var paramModel = new Param({ 
                                         'name': $(param).attr('name'),
@@ -93,7 +101,7 @@ if ( typeof define === "function" && define.amd  ) {
                                         'placein': $(param).attr('placein')                             
                                     });  
                                     parList.add(paramModel);                                  
-                                });
+                                });*/
 
                                 return parList;
                             } (serv)

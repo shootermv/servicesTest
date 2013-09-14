@@ -4,7 +4,7 @@ Json View:
  3. 
 
 Services List View
- 1. No data should be displayed in case there is no services in xml
+ 1. 'No data' message should be displayed in case there is no services in xml
  2. "No XML file found" should be displayed in case there is no xml at this path
  3. Xml not formed correcctly  should be displayed in case there is double attributes inside XML
  4. keys navigaiton
