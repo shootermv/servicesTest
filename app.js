@@ -30,12 +30,14 @@ app.get('/excel', function(req, res, next){
 });
 
 app.get('/api/wines', function(req, res, next){
-	res.send({ "result": "got all the wines collection"});
+    setTimeout(function(){
+		res.send({ "result": "got all the wines collection"});
+	},1000);
 });
 
 app.post('/api/wines', function(req, res, next){
-    console.log('rrr:'+req.body.country)
-	res.send({ "result": "wine created!"});
+    //console.log('rrr:'+req.body.country)
+	res.send({ "result": "wine created!","country":req.body.country});
 });
 
 app.put('/api/wines', function(req, res, next) {
@@ -50,8 +52,7 @@ app.post('/api/headers', function(req, res, next){
 	res.send({ "result": "header customheader1:"+req.headers['customheader1']+" sended"});
 });
 
-app.post('/api/objecttype', function(req, res, next){
-    console.log('rrr:'+req.body)
+app.post('/api/objecttype', function(req, res, next){    
 	res.send({ "result": "object {name:"+req.body.objectparameter.name+"} sended!"});
 });
 

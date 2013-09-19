@@ -8,7 +8,7 @@ define([
 
 
 
-
+ console.log('router activated...');
 
   var app={};
   app.servicesLst = new ServicesList();   

@@ -1,7 +1,7 @@
 require.config({
   baseUrl: "js",
  // urlArgs: 'cb=' + Math.random(),
-  deps:["config","app-amd"],
+  deps:["config","app"],
   paths: {
     'jquery'    : 'jquery/jquery',        
     'jquerymobile.config' : 'mobile/jquerymobile.config',
@@ -16,8 +16,8 @@ require.config({
     },
     'jquery'    : 'jquery',
     'jquerymobile.config' : ['jquery'],
-     jquerymobile : {
-          deps : ["jquery", 'jquerymobile.config']
+    jquerymobile : {
+          deps : ["jquery", 'jquerymobile.config']		     
      },
      backbone: {
           deps: ['underscore', 'jquery', 'jquerymobile'],

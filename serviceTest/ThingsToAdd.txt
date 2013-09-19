@@ -2,12 +2,12 @@
 2. Add base view with base functionality to inherit from -V
 3. Add serach service by description -V
 4. less
-5. minification
+5. minification - V
 6. more tests
 7. abilitiy to run with server ulrs from config -V
 8. abilitiy to run with xml ulrs from config -V
 9. abilitiy to run all the services at once and get indication of failure/success -V
-10. ability to navigate with keys
+10. ability to navigate with keys - V
 11. add ability to run custom service and to save it to xml
 12. data type selector -V
 13. CSV formatter -V
@@ -17,6 +17,6 @@
 17. 'Help' button (version button)- V
 18. headers support -V
 19. objects as parameters support -V
-20. Convert backend to Express
-21. add package.json
+20. Convert backend to Express -V
+21. add package.json -V
 22. create demo page in github

@@ -6,7 +6,6 @@ if ( typeof define === "function" && define.amd  ) {
 
 
              return {
-
              	serverURL:'',
              	xmlURL:'services.xml',
                 headers:[{

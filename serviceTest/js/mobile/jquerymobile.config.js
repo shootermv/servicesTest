@@ -1,15 +1,14 @@
 define(['jquery'], function ($) {
-
-    //console.log('mobile config...')
+     console.log('mobileinit handler attached...')
     $(document).on("mobileinit", function () {
  
-
-        //console.log('mobileinit fired...')
+        console.log('mobileinit event fired...')
+       
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
 
        // $.mobile.pushStateEnabled = false;
-      //  $.mobile.linkBindingEnabled = false; //-- works properly with jqm 1.1.1 rc1
+       // $.mobile.linkBindingEnabled = false; //-- works properly with jqm 1.1.1 rc1
 
         // use ? $.mobile.autoInitializePage = false;
         /*
