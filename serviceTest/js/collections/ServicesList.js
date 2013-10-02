@@ -120,6 +120,11 @@ if ( typeof define === "function" && define.amd  ) {
                                     return $(param).attr('default');
                                 else if($(param).attr('paramtype')==='object')
                                     return JSON.parse($(param).attr('default'));
+                                else if($(param).attr('paramtype')=="dependencyParam"){
+                                    console.log('setting dependancy param value -'+window.DependencyParam)
+                                     return window.dependencyParam;                            
+                                }
+
                              }()  ,
                             'paramtype':$(param).attr('paramtype') ?$(param).attr('paramtype'):'string',
                             'placein': $(param).attr('placein')                             

@@ -5,7 +5,7 @@ if ( typeof define === "function" && define.amd  ) {
         'settings'
         ]
         , function (Backbone, settings) {
-
+            
 			var Service = Backbone.Model.extend({    
 			    defaults:{
                       
@@ -19,7 +19,8 @@ if ( typeof define === "function" && define.amd  ) {
 			    },
                 idAttribute:"method",
 			    invoke:function(){
-                        console.log('invoke called');
+                        
+                        //console.log('invoke called');
 			    	    this.prepareParams();
                         return $.ajax({
                             type: this.get('action'), //GET or POST or PUT or DELETE verb
@@ -48,8 +49,16 @@ if ( typeof define === "function" && define.amd  ) {
                     this.dataparams = {};
             		
             		var beforeparams=[], headerparams=[] ,afterparams='';
+
+
+            
+
+
             		
                     _.each(this.get('params').models, function (param) {
+
+
+
             		    
                         if (param.get('placein')) {
             				switch(param.get('placein')){

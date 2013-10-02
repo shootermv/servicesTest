@@ -4,6 +4,33 @@ app.use(express.bodyParser());
 app.use(express.static(__dirname));
 
 
+app.post ('/login',function(req, res, next){
+  res.json({ token: 'tokeeeen' });
+});
+
+
+generateXml = function(req, res){
+  res.writeHead(200, {'Content-Type': 'text/xml'});
+  console.log('Content-Type-"text/xml"');
+
+  var result=
+  '<?xml version="1.0" encoding="UTF-8"?>'+
+'<celebs>'+
+  '<celeb id="421">'+
+    '<name>Johnny Stardust</name>'+
+    '<image>johnny_200.jpg</image>'+
+ ' </celeb></celebs>';
+
+
+  res.write( result);
+  res.end();
+}
+
+
+app.get('/xml', function(req, res, next){
+  generateXml(req, res);
+});
+
 generateExcel = function(req, res){
   
   var fs = require('fs');

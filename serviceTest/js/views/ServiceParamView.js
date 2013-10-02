@@ -31,6 +31,17 @@ if ( typeof define === "function" && define.amd  ) {
                     this.model.set(change);
                 },
                 render: function () {
+
+
+
+
+                    //care about dependencyParam
+                    /*
+                    if(this.model.get('paramtype')=="dependencyParam"){
+                        this.model.set({'defaultValue':window.dependencyParam});                            
+                    } */  
+
+
                     this.$el.attr('data-role', 'fieldcontain').html(this.template(this.model.toJSON()));                
                     return this;
                 }

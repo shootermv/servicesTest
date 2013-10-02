@@ -13,8 +13,7 @@ if ( typeof define === "function" && define.amd  ) {
             var JsonView = BaseView.extend({
 
                 template: _.template(json_view_tpl),
-                initialize: function () {
-                   
+                initialize: function () {                   
 
                     this.listenTo(this.model, 'change', this.changeDataType);
                 },
@@ -25,21 +24,24 @@ if ( typeof define === "function" && define.amd  ) {
 
                     
                     //loading animation
-                    this.showLoading();
-
-             
-
-  
+                    this.showLoading();            
                     _this.model.invoke().done(function(data){  
-                          if( _this.model.get('datatype')!='json') {
-                            _this.$el.find('pre').html(data); //for datatype "TEXT"
+
+                          switch(_this.model.get('datatype')){
+                            case 'json' : 
+                                _this.displayJson(data);                             
+                                break;
+                            case 'text' :                                 
+                                _this.$el.find('pre').text(data);                             
+                                break;  
+
+                                
                           }
-                          else{
-                            _this.displayJson(data); 
-                          }
+
                           _this.model.set({'status':'succeeded'});
                                                
                     }).fail(function(data,status, error){
+                            console.log('y',error)
                             _this.displayJson({ error: data });
                             _this.model.set({'status':'failed'});
 

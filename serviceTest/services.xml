@@ -1,5 +1,13 @@
 <?xml version="1.0"?>
 <application> 
+    <resource path="/xml">
+        <method id="generate_xml" action="GET" datatype="text">
+          <request> 
+            <param name="token" default="" paramtype="dependencyParam" />           
+          </request>
+          <description>Generates XML output</description>           
+        </method>
+    </resource>   
     <resource path="/excel">
         <method id="generate_csv" action="GET" datatype="text">
           <request>            
