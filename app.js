@@ -19,7 +19,8 @@ generateXml = function(req, res){
   '<celeb id="421">'+
     '<name>Johnny Stardust</name>'+
     '<image>johnny_200.jpg</image>'+
- ' </celeb></celebs>';
+   '</celeb>'+
+ '</celebs>';
 
 
   res.write( result);
