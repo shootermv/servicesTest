@@ -20,3 +20,5 @@
 20. Convert backend to Express -V
 21. add package.json -V
 22. create demo page in github
+23. build script should remove all unneccessary directories from inside "dist"
+24. import only necessary scripts/styles of jqmobile framework

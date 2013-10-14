@@ -38,7 +38,7 @@
     <resource path="/api/wines/" >
         <method id="Edit_wine" action="PUT">
           <request>
-            <param name="id" default="9" placein="after" />  
+            <param name="id" default="true" placein="after" />  
             <param name="country" default="RUSSIA"  />    
             <param name="description" default="very tasty wine" />    
             <param name="grapes" default="some grape"  />   

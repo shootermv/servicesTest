@@ -121,7 +121,7 @@ if ( typeof define === "function" && define.amd  ) {
                                 else if($(param).attr('paramtype')==='object')
                                     return JSON.parse($(param).attr('default'));
                                 else if($(param).attr('paramtype')=="dependencyParam"){
-                                    console.log('setting dependancy param value -'+window.DependencyParam)
+                                    console.log('setting dependancy param value -'+window.dependencyParam)
                                      return window.dependencyParam;                            
                                 }
 

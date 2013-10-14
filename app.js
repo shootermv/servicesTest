@@ -69,7 +69,7 @@ app.post('/api/wines', function(req, res, next){
 });
 
 app.put('/api/wines', function(req, res, next) {
-	res.send({ "result": "wine updated!"});
+	res.json({ "result": "wine updated!"});
 });
 
 app.del('/api/wines/yoko', function(req, res, next) {

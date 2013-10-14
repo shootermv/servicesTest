@@ -26,19 +26,23 @@ if ( typeof define === "function" && define.amd  ) {
                     //loading animation
                     this.showLoading();            
                     _this.model.invoke().done(function(data){  
+                        if(typeof(data) === 'undefined'){
+                            _this.displayJson('no json to dsiplay');                                                  
+                        }
+                        else
+                        {
 
-                          switch(_this.model.get('datatype')){
-                            case 'json' : 
-                                _this.displayJson(data);                             
-                                break;
-                            case 'text' :                                 
-                                _this.$el.find('pre').html(_this.formatXml(data));                             
-                                break;  
+                            switch(_this.model.get('datatype')){
+                                case 'json' : 
+                                    _this.displayJson(data);                             
+                                    break;
+                                case 'text' :                                 
+                                    _this.$el.find('pre').html(_this.formatXml(data));                             
+                                    break;                                  
+                            }
+                        }
 
-                                
-                          }
-
-                          _this.model.set({'status':'succeeded'});
+                        _this.model.set({'status':'succeeded'});
                                                
                     }).fail(function(data,status, error){
                             console.log('y',error)
