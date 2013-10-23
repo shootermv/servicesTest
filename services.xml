@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <application> 
-    <resource path="/xml">
-        <method id="generate_xml" action="GET" datatype="text">
+    <resource path="jsons/1.json">
+        <method id="some service 1" action="GET" >
           <request> 
             <param name="token" default="" paramtype="dependencyParam" />           
           </request>
           <description>Generates XML output</description>           
         </method>
     </resource>   
-    <resource path="/excel">
-        <method id="generate_csv" action="GET" datatype="text">
+    <resource path="jsons/2.json">
+        <method id="another service 2" action="GET">
           <request>            
           </request>
           <description>Generates CSV file and output</description>           
     </method>
     </resource>  
-    <resource path="/api/wines">
-        <method id="all_wines" action="GET">
+    <resource path="jsons/3.json">
+        <method id="service 3" action="GET">
           <request>            
           </request>
           <description>Gets all the collection of the wines</description>           
         </method>
     </resource>   
     <resource path="/api/wines" >
-        <method id="new_wine" action="POST" >
+        <method id="service with error" action="POST" >
            <request>            
             <param name="country" default="RUSSIA"  />    
             <param name="description" default="very tasty wine" />    
@@ -34,45 +34,5 @@
           </request>
           <description>Adds a new wine</description>       
         </method>
-    </resource>  
-    <resource path="/api/wines/" >
-        <method id="Edit_wine" action="PUT">
-          <request>
-            <param name="id" default="true" placein="after" />  
-            <param name="country" default="RUSSIA"  />    
-            <param name="description" default="very tasty wine" />    
-            <param name="grapes" default="some grape"  />   
-            <param name="name" default="Kavarne Sovinoin"  /> 
-            <param name="year" default="1973"  />   
-            <param name="region" default="Vladivostok"  />   
-          </request>
-          <description>Make modifications to the wine</description>           
-        </method>
-    </resource>
-    <resource path="/api/wines/" >
-        <method id="delete_wine" action="DELETE">
-          <request>
-            <param name="koko" default="yoko" placein="before" /> 
-            <param name="id" default="9" placein="after" />   
-          </request>
-          <description>Deletes the wine</description>           
-        </method>
-    </resource>
-    <resource path="/api/headers/" >
-        <method id="send_headers" action="POST">
-          <request>
-            <param name="customheader1" default="some-value-for-header" placein="header" /> 
-            <param name="customheader2" default="9" placein="header" />   
-          </request>
-          <description>sendes some headers</description>           
-        </method>
-    </resource> 
-    <resource path="/api/objecttype/" >
-        <method id="objecttype_param" action="POST">
-          <request>
-            <param name="objectparameter" paramtype="object" default='{"name":"momo"}'/>           
-          </request>
-          <description>sends object param</description>           
-        </method>
-    </resource>     	
+    </resource>          
 </application>
