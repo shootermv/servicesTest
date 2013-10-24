@@ -9,7 +9,7 @@ if ( typeof define === "function" && define.amd  ) {
 			  showLoading: function( ) {
 			    //loading animation
 			    $.mobile.loading('show', {
-			        text: 'request sended',
+			        text: 'request sent',
 			        textVisible: true,
 			        theme: 'e',
 			        textonly: false

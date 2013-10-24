@@ -7,7 +7,7 @@
 3. makes user to be able to test each service throught the ajax request and view the data recieved 
 from server
 4. json displayed is nice styled
-4. makes user to be able to launch all the ajax requests at once and get indication about the request status of each service
+5. makes user to be able to launch all the ajax requests at once and get indication about the request status of each service
 
 ### Frameworks used:
 
@@ -20,3 +20,5 @@ from server
 
 1. Nodejs
 2. Express
+
+<a href="http://shootermv.github.io/servicesTest/services.html" target="_blank">Demo</a>
