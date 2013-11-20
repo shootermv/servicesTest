@@ -1,5 +1,9 @@
 		   <!--<div data-role="collapsible" data-theme="c" data-content-theme="d"  data-inset="false">-->
                 <h4 id="jsonheader"><%=datatype %>:</h4> 
+				<% if (datatype== "text") { %>
+				  <a href="#" class="export" data-role="button" data-mini="true" data-theme="b" data-inline="true">export to csv</a>
+				<% } %>				
                 <pre>
                 </pre>
-            <!--</div>-->  
+            <!--</div>--> 
+         			

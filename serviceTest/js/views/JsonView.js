@@ -18,6 +18,38 @@ if ( typeof define === "function" && define.amd  ) {
                     this.listenTo(this.model, 'change', this.changeDataType);
                 },
                 
+                events:{
+				  'click a.export':'exportCsv'
+				},
+				exportCsv: function(e) {
+
+
+                     var 
+					// Data URI
+					tmpColDelim = String.fromCharCode(11), // vertical tab character
+					tmpRowDelim = String.fromCharCode(0), // null character
+
+
+					// actual delimiter characters for CSV format
+					colDelim = '","',
+					rowDelim = '"\r\n"',
+
+					
+					csv=this.$el.find('pre').text()
+					.split(tmpRowDelim).join(rowDelim)
+                    .split(tmpColDelim).join(colDelim) + '"',
+					
+					csvData = 'data:application/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+                   
+                     
+					$(e.target).closest('a')
+							.attr({
+							'download': 'export.csv',
+								'href': csvData,
+								'target': '_blank'
+					});
+				
+				},
                 invokeService: function () {
 
                     var _this = this;

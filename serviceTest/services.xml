@@ -70,7 +70,7 @@
     <resource path="/api/objecttype/" >
         <method id="objecttype_param" action="POST">
           <request>
-            <param name="objectparameter" paramtype="object" default='{"name":"momo"}'/>           
+            <param name="objectparameter" paramtype="object" default='[ { "categoryId":"92", "enableSMSAlert":"0", "targetSum":"57.718", "month":"201308" } ]'/>           
           </request>
           <description>sends object param</description>           
         </method>

@@ -15,12 +15,12 @@ if ( typeof define === "function" && define.amd  ) {
 
                 }],
                 getDependencyParam:function(){
-                     
+                     /*
                      $.post('/login',function(data){
                         console.log('loading dependancy param')
                         window.dependencyParam=data.token;
                      });
-                     
+                     */
                      //window.dependencyParam="tokeeen";
                 }()
              }

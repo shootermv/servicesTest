@@ -81,7 +81,7 @@ app.post('/api/headers', function(req, res, next){
 });
 
 app.post('/api/objecttype', function(req, res, next){    
-	res.send({ "result": "object {name:"+req.body.objectparameter.name+"} sended!"});
+	res.send({ "result": "object {name:"+req.body.objectparameter[0].month+"} sended!"});
 });
 
 app.listen(3000);

@@ -49,18 +49,10 @@ if ( typeof define === "function" && define.amd  ) {
                     this.dataparams = {};
             		
             		var beforeparams=[], headerparams=[] ,afterparams='';
-
-
-            
-
-
-            		
+         		
                     _.each(this.get('params').models, function (param) {
 
-
-
-            		    
-                        if (param.get('placein')) {
+                      if (param.get('placein')) {
             				switch(param.get('placein')){
             				   case 'before':
                                   beforeparams.push( param.get('defaultValue'));
