@@ -29,7 +29,7 @@ if ( typeof define === "function" && define.amd  ) {
                             beforeSend:this.beforeSend,
                             url: this.url,
                             data: this.dataparams,
-                            contentType:'application/json', // content type sent to server
+                            contentType:'application/json; charset=UTF-8', // content type sent to server
                             dataType:this.get('datatype') ,//'json', //Expected data format from server  //text
                             processdata: this.processdata //True or False                      
                         })
