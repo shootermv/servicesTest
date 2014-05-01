@@ -13,8 +13,11 @@ module.exports = function(grunt) {
       }
     },
 	clean: {
-	  build: {
-		src: ["dist/ThingsToAdd.txt","dist/bugs.txt","dist/js/templates"]
+	  beforebuild: {
+		src: ["dist/**/**"]
+	  },
+	  afterbuild: {
+		src: ["dist/*.txt","dist/js/templates","dist/.gitignore"]
 	  }
 	},		
 	requirejs: {
@@ -33,7 +36,7 @@ module.exports = function(grunt) {
 		  deps:["config","app"],
 		  done: function(done, output) {
 		     grunt.log.subhead('finished, cleaning...');
-			 grunt.task.run('clean');
+			 grunt.task.run('clean:afterbuild');
 			 done();
 		  }
 		}
@@ -51,7 +54,7 @@ module.exports = function(grunt) {
   
  
   // Default task(s).
-  grunt.registerTask('default', ['requirejs']);
+  grunt.registerTask('default', ['clean:beforebuild','requirejs']);
   
   //r build
   //grunt.loadNpmTasks('grunt-contrib-requirejs');
